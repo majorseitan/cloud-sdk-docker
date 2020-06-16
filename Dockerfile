@@ -39,5 +39,7 @@ RUN apt-get install -qqy \
         gcc \
         python3-pip
 RUN git config --system credential.'https://source.developers.google.com'.helper gcloud.sh
+RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | /bin/bash
+RUN /usr/local/bin/helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+RUN /usr/local/bin/helm repo update
 VOLUME ["/root/.config", "/root/.kube"]
-
